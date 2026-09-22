@@ -1,17 +1,16 @@
-# Math Tutor 6–12 — v0.1
+# Math Tutor 6–12 — v0.2
 
-A process-aware math tutoring prototype inspired by 1:1 tutoring: students work through mathematics, the system diagnoses steps rather than only final answers, and a Socratic tutor intervenes selectively.
+A process-aware math tutoring prototype focused on student thinking rather than final-answer checking.
 
-## v0.1 includes
-- Grade 6–9 starter problems
-- Step-by-step reasoning trail
-- Deterministic misconception rules for initial equation/distribution cases
-- Socratic tutor responses
-- Teacher Lens with misconception/prerequisite evidence
-- Scratch-paper drawing canvas
-- Chromebook mouse/trackpad drawing by holding **Space**
-- Touch/stylus drawing
-- GitHub Pages deployment workflow
+## v0.2
+- Large student thinking canvas
+- Touch/stylus drawing and Spacebar + mouse/trackpad Chromebook drawing
+- Progressive support ladder: observe → reflect → focus → scaffold → mini-lesson
+- “I’m stuck” escalation without immediately revealing the answer
+- Human-confirmed math-line entry as the bridge to future handwriting recognition
+- Misconception detection for equation/equality and distribution examples
+- Automatic prerequisite mini-lessons after repeated difficulty
+- Live Teacher Lens with process evidence
 
 ## Run locally
 ```bash
@@ -19,8 +18,9 @@ npm install
 npm run dev
 ```
 
-## GitHub Pages
-Push to `main`, then in GitHub open **Settings → Pages** and select **GitHub Actions** as the source.
+## Build
+```bash
+npm run build
+```
 
-## Architecture direction
-Next milestones: structured math parser/equivalence engine, handwriting recognition, speech input, student skill graph, prerequisite mini-lessons, classroom dashboard, curriculum/standards library, and a secure backend for AI/voice/data. Never put AI API keys in the Vite client.
+The included GitHub Actions workflow deploys `dist/` to GitHub Pages.
