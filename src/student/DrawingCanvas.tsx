@@ -1,7 +1,7 @@
 import{useEffect,useRef,useState}from'react';
 export default function DrawingCanvas(){const ref=useRef<HTMLCanvasElement>(null);const[drawing,setDrawing]=useState(false);const space=useRef(false);
  useEffect(()=>{const down=(e:KeyboardEvent)=>{if(e.code==='Space'&&!['INPUT','TEXTAREA'].includes((e.target as HTMLElement)?.tagName)){space.current=true;e.preventDefault()}};const up=(e:KeyboardEvent)=>{if(e.code==='Space')space.current=false};window.addEventListener('keydown',down);window.addEventListener('keyup',up);return()=>{window.removeEventListener('keydown',down);window.removeEventListener('keyup',up)}},[]);
- const point=(e:React.PointerEvent<HTMLCanvasElement>)=>{const c=ref.current!,r=c.getBoundingClientRect();return[(e.clientX-r.left)*c.width/r.width,(e.clientY-r.top)*c.height/r.height]};
+ const point=(e:React.PointerEvent<HTMLCanvasElement>):[number,number]=>{const c=ref.current!,r=c.getBoundingClientRect();return[(e.clientX-r.left)*c.width/r.width,(e.clientY-r.top)*c.height/r.height]};
  const start=(e:React.PointerEvent<HTMLCanvasElement>)=>{if(e.pointerType==='mouse'&&!space.current)return;setDrawing(true);const c=ref.current!,ctx=c.getContext('2d')!,p=point(e);ctx.beginPath();ctx.moveTo(...p);c.setPointerCapture(e.pointerId)};
  const move=(e:React.PointerEvent<HTMLCanvasElement>)=>{if(!drawing)return;const ctx=ref.current!.getContext('2d')!,p=point(e);ctx.lineWidth=3;ctx.lineCap='round';ctx.strokeStyle='#18212b';ctx.lineTo(...p);ctx.stroke()};
  const clear=()=>{const c=ref.current!,ctx=c.getContext('2d')!;ctx.clearRect(0,0,c.width,c.height)};
