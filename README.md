@@ -1,26 +1,14 @@
-# Math Tutor 6–12 — v0.2
+# Math Tutor 6–12 — v0.4
 
-A process-aware math tutoring prototype focused on student thinking rather than final-answer checking.
+A prototype process-aware math tutor for grades 6–12.
 
-## v0.2
-- Large student thinking canvas
-- Touch/stylus drawing and Spacebar + mouse/trackpad Chromebook drawing
-- Progressive support ladder: observe → reflect → focus → scaffold → mini-lesson
-- “I’m stuck” escalation without immediately revealing the answer
-- Human-confirmed math-line entry as the bridge to future handwriting recognition
-- Misconception detection for equation/equality and distribution examples
-- Automatic prerequisite mini-lessons after repeated difficulty
-- Live Teacher Lens with process evidence
+## v0.4: Teacher assignment builder
+- Paste existing problems and analyze them into tutor-ready activities.
+- Upload control accepts PDF/image/Word/text. **In this static GitHub Pages prototype, only `.txt` is read automatically.** PDF/image/Word recognition is intentionally deferred to a secure backend/AI service; the UI tells teachers to paste those problems for now.
+- Teacher review is required before assigning.
+- Suggested skill, workspace, and prerequisites can be edited.
+- Approved teacher problems appear immediately in the student experience.
+- Existing student canvas, graph workspace, progressive Socratic support, and Teacher Lens remain.
 
-## Run locally
-```bash
-npm install
-npm run dev
-```
-
-## Build
-```bash
-npm run build
-```
-
-The included GitHub Actions workflow deploys `dist/` to GitHub Pages.
+## Important prototype limitation
+No student or teacher data is persisted. There is no authentication or server-side AI yet. Do not use this prototype for real student records.
