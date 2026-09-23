@@ -1,0 +1,2 @@
+import type {Evidence} from '../types/problem';
+export default function TeacherLens({attempts,support,evidence}:{attempts:number;support:number;evidence:Evidence[]}){return <aside className="teacher"><h3>Teacher Lens</h3><div className="stats"><span>Attempts <b>{attempts}</b></span><span>Support <b>{support}/4</b></span></div><h4>Live evidence</h4>{evidence.length===0?<p className="muted">Student work will appear here.</p>:evidence.slice(-6).reverse().map((e,i)=><p className="event" key={i}><small>{e.time}</small> {e.detail}</p>)}</aside>}
