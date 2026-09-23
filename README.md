@@ -1,14 +1,9 @@
-# Math Tutor 6–12 — v0.4
+# Math Tutor 6–12 — v0.5
 
-A prototype process-aware math tutor for grades 6–12.
-
-## v0.4: Teacher assignment builder
-- Paste existing problems and analyze them into tutor-ready activities.
-- Upload control accepts PDF/image/Word/text. **In this static GitHub Pages prototype, only `.txt` is read automatically.** PDF/image/Word recognition is intentionally deferred to a secure backend/AI service; the UI tells teachers to paste those problems for now.
-- Teacher review is required before assigning.
-- Suggested skill, workspace, and prerequisites can be edited.
-- Approved teacher problems appear immediately in the student experience.
-- Existing student canvas, graph workspace, progressive Socratic support, and Teacher Lens remain.
+v0.5 closes the first tutoring loop: student ink → recognized/confirmed math line → deterministic diagnosis → contextual Socratic response → Teacher Lens evidence.
 
 ## Important prototype limitation
-No student or teacher data is persisted. There is no authentication or server-side AI yet. Do not use this prototype for real student records.
+GitHub Pages is a static host, so this build does **not** send student handwriting to a third-party AI service or expose an API key in the browser. The canvas now has a `Read my work` bridge: students confirm the newest recognized line, and the tutoring engine analyzes it immediately. The recognition bridge is intentionally isolated so a secure handwriting/vision backend can replace it without changing the tutor engine.
+
+## First diagnostic loop
+For `3(x + 4) = 21`, the engine recognizes several meaningful states, including correct distribution, partial distribution, a dropped coefficient, isolating `3x`, and the final solution. `I'm stuck` now uses the latest analysis when available instead of only advancing a generic hint counter.
